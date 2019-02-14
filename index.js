@@ -1,5 +1,9 @@
-const server = require('./api/server.js');
+require("dotenv").config();
+const server = require("./api/server.js");
 
-server.listen(4000, () => {
-  console.log('\n*** Server Running on http://localhost:4000 ***\n');
+//a hosting service might assign a port dynamically
+// Environment variables are system wide
+const port = process.env.PORT || 4000;
+server.listen(port, () => {
+  console.log(`{\n*** Server Running on http://localhost:${port} ***\n}`);
 });
