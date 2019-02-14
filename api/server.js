@@ -25,8 +25,7 @@ server.post("/shoutouts", async (req, res) => {
   try {
     const [id] = await db("shoutouts").insert(req.body);
     const shoutouts = await db("shoutouts");
-    const motd = process.env.MOTD || "No message of the Day";
-    res.status(201).json(motd, shoutouts);
+    res.status(201).json(shoutouts);
   } catch (error) {
     console.error("\nERROR", error);
     res.status(500).json({ error: "Cannot add the shoutout" });
